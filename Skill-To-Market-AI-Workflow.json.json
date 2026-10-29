@@ -1,0 +1,372 @@
+{
+  "name": "Prpject Skill To Market AI",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "skill-to-market-ai",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*",
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -128,
+        -16
+      ],
+      "id": "66d01a08-fbf1-4131-a88f-89a56367975f",
+      "name": "Webhook",
+      "webhookId": "163272c9-f46d-4f3e-8ffc-349af17cbe06"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify(JSON.parse($(\"Prepare sheet row\").first().json.aiResultJSON)) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        832,
+        0
+      ],
+      "id": "ab98ef2c-a0d5-4af9-acea-c3c59d138200",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an expert digital marketing and personal branding coach for university students and beginner freelancers.\n\nAnalyze the student's details below and create a practical, personalized Digital Marketing Kit for the project \"Skill To Market AI\".\n\nSTUDENT INFORMATION\nDegree: {{ $json.body.degree }}\nSkill: {{ $json.body.skill }}\nExperience Level: {{ $json.body.experience }}\nCareer Goal: {{ $json.body.careerGoal }}\nPreferred Platforms: {{ $json.body.platforms }}\nArea of Interest: {{ $json.body.interest }}\nAvailable Time: {{ $json.body.availableTime }}\n\nFIVERR INFORMATION (use only if fiverrEnabled is \"true\")\nfiverrEnabled: {{ $json.body.fiverrEnabled }}\nserviceType: {{ $json.body.serviceType }}\ntargetClient: {{ $json.body.targetClient }}\ntools: {{ $json.body.tools }}\nstartingPrice: {{ $json.body.startingPrice }}\ndeliveryTime: {{ $json.body.deliveryTime }}\nrevisions: {{ $json.body.revisions }}\nportfolio: {{ $json.body.portfolio }}\n\nRULES\n- Use only the student information provided above.\n- Do not invent qualifications, certifications, clients, projects, job titles, or past experience.\n- If any detail is missing, give general beginner-friendly advice instead of guessing facts.\n- If Available Time is empty, use 30 to 45 minutes per day as a planning assumption.\n- Tailor every section to the student's skill, degree, experience level, career goal, and area of interest.\n- Focus content recommendations on the preferred platforms.\n- Always include LinkedIn and Instagram profile optimization.\n- Keep recommendations realistic for university students and beginner freelancers.\n- Do not promise income, followers, freelance clients, or guaranteed success.\n- Use simple, clear, professional English.\n- Make captions, profile text, and outreach messages ready to copy.\n- Use placeholders such as [Your Name], [Client Name], and [Portfolio Link] where personal details are needed.\n- Keep each text field concise, specific, and practical.\n- Never present hypothetical projects, achievements, or client results as real facts.\n- Never mention the project name \"Skill To Market AI\" in any output field.\n- Do NOT write hashtags inside the \"caption\" text. Put hashtags only in the \"hashtags\" array.\n\nPROFILE SCORE & ANALYSIS RULES\n- Include a profileAnalysis section.\n- The student has not provided an actual LinkedIn or Instagram profile for evaluation.\n- Therefore, set score to null.\n- Set scoreStatus to \"Not evaluated\".\n- Give practical profile improvement tips based on the student's skills and career goal.\n- Do not invent a numeric score or claim to have analyzed a real profile.\n- A numeric profile score should only be calculated in a future workflow when sufficient actual profile details are provided.\n\nPRICING RULES\n- Use USD for all suggested freelance prices.\n- Suggest beginner-friendly price ranges that match the skill and experience level.\n- Treat all prices as estimates, not verified current market rates.\n- Mention that actual pricing depends on project scope, complexity, location, and client requirements.\n- Do not promise earnings or guarantee that clients will accept the suggested prices.\n- Do not invent market research or claim to have checked live Fiverr prices.\n\nOUTPUT FORMAT\nReturn ONLY valid JSON.\n\nDo not add markdown, code fences, explanations, or any text before or after the JSON.\n\nUse double quotes for every JSON key and string.\n\nUse exactly the following JSON keys and structure. The only exception is the optional top-level key \"fiverrGig\", which is described in the FIVERR GIG section below.\n\n{\n  \"skillAnalysis\": {\n    \"summary\": \"\",\n    \"strengths\": [\"\"],\n    \"improvementAreas\": [\"\"],\n    \"marketableServices\": [\"\"]\n  },\n  \"targetAudience\": {\n    \"primaryAudience\": \"\",\n    \"secondaryAudience\": \"\",\n    \"clientTypes\": [\"\"],\n    \"whereToFindThem\": [\"\"]\n  },\n  \"niche\": {\n    \"recommendedNiche\": \"\",\n    \"reason\": \"\",\n    \"brandPositioning\": \"\",\n    \"uniqueValueProposition\": \"\",\n    \"brandTone\": \"\"\n  },\n  \"profileOptimization\": {\n    \"linkedin\": {\n      \"headline\": \"\",\n      \"about\": \"\",\n      \"skillsToAdd\": [\"\"],\n      \"tips\": [\"\"]\n    },\n    \"instagram\": {\n      \"bio\": \"\",\n      \"highlightIdeas\": [\"\"],\n      \"tips\": [\"\"]\n    }\n  },\n  \"contentStrategy\": {\n    \"contentPillars\": [\n      {\n        \"pillar\": \"\",\n        \"description\": \"\"\n      }\n    ],\n    \"postIdeas\": [\n      {\n        \"platform\": \"\",\n        \"idea\": \"\"\n      }\n    ],\n    \"postingFrequency\": \"\"\n  },\n  \"marketingPlan\": [\n    {\n      \"day\": 1,\n      \"focus\": \"\",\n      \"platform\": \"\",\n      \"task\": \"\",\n      \"contentIdea\": \"\",\n      \"engagementActivity\": \"\",\n      \"timeNeeded\": \"\"\n    }\n  ],\n  \"captions\": [\n    {\n      \"type\": \"educational\",\n      \"platform\": \"\",\n      \"caption\": \"\",\n      \"hashtags\": [\"\"]\n    }\n  ],\n  \"outreach\": {\n    \"linkedinMessage\": \"\",\n    \"emailSubject\": \"\",\n    \"emailBody\": \"\",\n    \"instagramDM\": \"\",\n    \"followUpMessage\": \"\"\n  },\n  \"pricing\": {\n    \"pricingApproach\": \"\",\n    \"startingPriceRange\": \"\",\n    \"packageIdeas\": [\n      {\n        \"name\": \"\",\n        \"price\": \"\",\n        \"includes\": \"\"\n      }\n    ],\n    \"tips\": [\"\"]\n  },\n  \"profileAnalysis\": {\n    \"score\": null,\n    \"scoreStatus\": \"Not evaluated\",\n    \"analysis\": \"\",\n    \"improvementTips\": [\"\"]\n  }\n}\n\nCONTENT REQUIREMENTS\n\nSKILL ANALYSIS\n- Explain the student's current position based on their provided experience level.\n- Include 3 strengths or potential advantages.\n- Include 3 areas for improvement.\n- Suggest 3 realistic marketable services related to the student's skill.\n- Do not claim the student has demonstrated abilities that have not been verified.\n\nTARGET AUDIENCE\n- Identify a suitable primary and secondary audience.\n- Suggest 3 to 5 possible client types.\n- Explain where beginners can find these audiences online.\n\nNICHE & BRAND POSITIONING\n- Recommend one suitable niche.\n- Explain why it fits the student's skill and interests.\n- Suggest a realistic brand positioning statement.\n- Create a unique value proposition without inventing achievements.\n- Recommend an appropriate professional brand tone.\n\nPROFILE OPTIMIZATION\n- Create a LinkedIn headline and About section.\n- Suggest relevant LinkedIn skills and profile improvement tips.\n- Create an Instagram bio.\n- Suggest Instagram highlight ideas and optimization tips.\n- Do not claim the student has real work experience unless it was provided.\n\nCONTENT STRATEGY\n- Include exactly 3 to 4 contentPillars.\n- Include exactly 5 to 7 postIdeas.\n- Make all content ideas practical for the student's preferred platforms.\n- Recommend a realistic posting frequency.\n\n7-DAY MARKETING PLAN\n- marketingPlan must contain exactly 7 items.\n- Use day numbers 1, 2, 3, 4, 5, 6, and 7.\n- Each day must have a focus, platform, task, content idea, engagement activity, and time needed.\n- Make the tasks achievable within the student's available time.\n- If no time is provided, use the assumed 30 to 45 minutes per day.\n\nCAPTIONS & HASHTAGS\n- captions must contain exactly 6 items.\n- Include exactly 3 educational captions and 3 promotional captions.\n- Each caption must include 4 to 6 relevant hashtags in the \"hashtags\" array only, not inside the caption text.\n- Make captions ready to copy.\n- Do not include false claims or invented results.\n\nCLIENT OUTREACH\n- Write a professional LinkedIn connection message.\n- Write an email subject and outreach email body.\n- Write an Instagram direct message.\n- Write one polite follow-up message.\n- Keep messages friendly and suitable for beginner freelancers.\n- Use placeholders when names or personal details are unavailable.\n\nPRICING GUIDANCE\n- Suggest a beginner-friendly USD starting price range.\n- Include exactly 3 packageIdeas: Basic, Standard, and Premium.\n- For each package, provide an estimated price and describe what is included.\n- Keep packages realistic for the student's experience level.\n- Clearly mention that all prices are estimates, not verified market rates.\n\nPROFILE ANALYSIS\n- Set score to null.\n- Set scoreStatus to \"Not evaluated\".\n- Explain that actual profile details were not provided.\n- Include 4 to 5 practical improvement tips.\n- Do not generate a fake score.\n\nFIVERR GIG (ONLY IF fiverrEnabled IS \"true\")\nIf fiverrEnabled is \"true\", ALSO add one more top-level key \"fiverrGig\" to the same JSON, using the Fiverr information above (serviceType, targetClient, tools, startingPrice, deliveryTime, revisions, portfolio) together with the student information.\n\nFiverr rules:\n- gigTitle must start with \"I will\" and be under 80 characters.\n- category and subcategory must be a suitable Fiverr category and subcategory for the service.\n- Give exactly 5 tags (search keywords).\n- The description must be under 1200 characters, clear, honest, and buyer-focused. Do not claim years of experience, past clients, reviews, ratings, or completed orders.\n- Packages: Basic, Standard, and Premium must increase in price and scope. The Basic price must match startingPrice. Basic deliveryTime and revisions must match the student's values. Standard and Premium may have a higher price and more scope.\n- Each package must include name, price (USD), deliveryTime, revisions (number), and includes.\n- pricingSummary: short summary of the pricing, delivery time, and revisions. Mention that prices are estimates.\n- Give 4 to 5 FAQs, 4 to 5 buyer requirements, and 4 to 5 gallery/portfolio suggestions.\n- If portfolio is \"Not Available\", portfolioSuggestions must explain how a beginner can create 2 or 3 sample projects first. Do not suggest fake client work.\n- Do not claim to have checked live Fiverr prices or rankings.\n\n\"fiverrGig\" format:\n\"fiverrGig\": {\n  \"gigTitle\": \"\",\n  \"category\": \"\",\n  \"subcategory\": \"\",\n  \"tags\": [\"\", \"\", \"\", \"\", \"\"],\n  \"packages\": {\n    \"basic\": { \"name\": \"\", \"price\": \"\", \"deliveryTime\": \"\", \"revisions\": 0, \"includes\": \"\" },\n    \"standard\": { \"name\": \"\", \"price\": \"\", \"deliveryTime\": \"\", \"revisions\": 0, \"includes\": \"\" },\n    \"premium\": { \"name\": \"\", \"price\": \"\", \"deliveryTime\": \"\", \"revisions\": 0, \"includes\": \"\" }\n  },\n  \"pricingSummary\": \"\",\n  \"description\": \"\",\n  \"faqs\": [ { \"question\": \"\", \"answer\": \"\" } ],\n  \"requirements\": [\"\"],\n  \"portfolioSuggestions\": [\"\"]\n}\n\nIf fiverrEnabled is NOT \"true\", do NOT include \"fiverrGig\" at all.\n\nFINAL VALIDATION\nBefore responding, verify that:\n1. The response is valid JSON.\n2. There is no markdown or code fence.\n3. All required keys are present.\n4. marketingPlan contains exactly 7 days.\n5. captions contains exactly 6 items.\n6. contentPillars contains 3 to 4 items.\n7. postIdeas contains 5 to 7 items.\n8. pricing.packageIdeas contains Basic, Standard, and Premium.\n9. profileAnalysis.score is null.\n10. No qualifications, experience, achievements, or verified market prices have been invented.\n11. If fiverrEnabled is \"true\", \"fiverrGig\" is present with all its keys, gigTitle starts with \"I will\" and is under 80 characters, tags has exactly 5 items, and the three packages are present.\n12. If fiverrEnabled is not \"true\", \"fiverrGig\" is not present."
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "builtInTools": {},
+        "options": {
+          "thinkingBudget": 0
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        80,
+        0
+      ],
+      "id": "d36e1b56-6ef2-4c5d-921c-f5754bc983c5",
+      "name": "Message a model",
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "googlePalmApi": {
+          "id": "HIQZ8XkQAt6idKza",
+          "name": "Google Gemini(PaLM) Api account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "16gHNixqrtJfLoaIy_CAu5cRkBMg268gWJEV49z6EmQA",
+          "mode": "list",
+          "cachedResultName": "Skill To Market AI Data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16gHNixqrtJfLoaIy_CAu5cRkBMg268gWJEV49z6EmQA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1719844333,
+          "mode": "list",
+          "cachedResultName": "sheet-headings",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16gHNixqrtJfLoaIy_CAu5cRkBMg268gWJEV49z6EmQA/edit#gid=1719844333"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $json.timestamp }}",
+            "degree": "={{ $json.degree }}",
+            "skill": "={{ $json.skill }}",
+            "experience": "={{ $json.experience }}",
+            "careerGoal": "={{ $json.careerGoal }}",
+            "platforms": "={{ $json.platforms }}",
+            "interest": "={{ $json.interest }}",
+            "availableTime": "={{ $json.availableTime }}",
+            "fiverrEnabled": "={{ $json.fiverrEnabled }}",
+            "serviceType": "={{ $json.serviceType }}",
+            "targetClient": "={{ $json.targetClient }}",
+            "tools": "={{ $json.tools }}",
+            "startingPrice": "={{ $json.startingPrice }}",
+            "deliveryTime": "={{ $json.deliveryTime }}",
+            "portfolio": "={{ $json.portfolio }}",
+            "revisions": "={{ $json.revisions }}",
+            "aiResultJSON": "={{ $json.aiResultJSON }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "degree",
+              "displayName": "degree",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "skill",
+              "displayName": "skill",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "experience",
+              "displayName": "experience",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "careerGoal",
+              "displayName": "careerGoal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "platforms",
+              "displayName": "platforms",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "interest",
+              "displayName": "interest",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "availableTime",
+              "displayName": "availableTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fiverrEnabled",
+              "displayName": "fiverrEnabled",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "serviceType",
+              "displayName": "serviceType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "targetClient",
+              "displayName": "targetClient",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tools",
+              "displayName": "tools",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "startingPrice",
+              "displayName": "startingPrice",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "deliveryTime",
+              "displayName": "deliveryTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "revisions",
+              "displayName": "revisions",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "portfolio",
+              "displayName": "portfolio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "aiResultJSON",
+              "displayName": "aiResultJSON",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        608,
+        0
+      ],
+      "id": "69d39869-dbdf-463b-bb3b-d68adc97c382",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2FgrW5i5kvjnDoWr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const form = $('Webhook').first().json.body ?? {};\nconst gemini = $input.first().json;\nconst aiText = gemini.content?.parts?.[0]?.text;\nif (!aiText) {\n  throw new Error('Gemini output is missing content.parts[0].text');\n}\nconst fields = ['degree', 'skill', 'experience', 'careerGoal', 'platforms', 'interest', 'availableTime', 'fiverrEnabled', 'serviceType', 'targetClient', 'tools', 'startingPrice', 'deliveryTime', 'revisions', 'portfolio'];\nconst row = { timestamp: new Date().toISOString(), aiResultJSON: aiText };\nfor (const field of fields) {\n  row[field] = form[field] ?? '';\n}\nreturn [{ json: row }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        0
+      ],
+      "id": "51b656dc-4633-4143-8cee-e80f62e5812a",
+      "name": "Prepare sheet row"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Prepare sheet row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare sheet row": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "a640792b-3a6f-4b5d-a11d-c86b130e08b3",
+  "meta": {
+    "instanceId": "254fa73414e65ce9a821c79c4b8d05b6c6ceec92c4aeac3a5c47fa302a35d5d2"
+  },
+  "id": "jsxzJw97CERJaNPG",
+  "tags": []
+}

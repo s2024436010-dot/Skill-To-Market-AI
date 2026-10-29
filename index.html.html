@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill To Market AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <span class="logo-icon">✦</span>
+    Skill To Market AI
+  </div>
+
+  <nav aria-label="Main Navigation">
+    <a href="#home" data-view="home">Home</a>
+    <a href="#features" data-view="features">Features</a>
+    <a href="#how-it-works" data-view="how-it-works">How It Works</a>
+  </nav>
+
+  <button type="button" class="nav-button" id="exploreBtn">
+    Explore Now
+  </button>
+</header>
+
+<main>
+
+  <!-- HOME PAGE -->
+  <section id="home" class="page">
+    <div class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">
+          THE STUDENT BRANDING & FREELANCING STUDIO
+        </p>
+
+        <h1>Your Skills Deserve to Be Seen.</h1>
+
+        <p class="hero-description">
+          Turn your talent into a personal brand,
+          a digital marketing plan, and freelance
+          opportunities with AI.
+        </p>
+
+        <button type="button" class="primary-button"
+                data-view="student">
+          Build My Marketing Kit →
+        </button>
+
+        <p class="hero-note">
+          Discover your skills • Build your brand • Grow your career
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES PAGE -->
+  <section id="features" class="page" hidden>
+    <div class="features-section">
+      <div class="section-heading">
+        <p class="section-label">EXPLORE OUR FEATURES</p>
+        <h2>Everything You Need to Grow</h2>
+        <p>
+          From discovering your skills to building your
+          online presence and freelance career.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card brand-card">
+          <div class="feature-icon">✦</div>
+          <h3>Personal Branding</h3>
+          <p>
+            Discover your strengths, find your niche,
+            and prepare your professional online profile.
+          </p>
+        </article>
+
+        <article class="feature-card marketing-card">
+          <div class="feature-icon">▦</div>
+          <h3>7-Day Marketing Plan</h3>
+          <p>
+            Get a personalized marketing schedule
+            with content ideas and daily activities.
+          </p>
+        </article>
+
+        <article class="feature-card fiverr-card">
+          <div class="feature-icon">◆</div>
+          <h3>Fiverr Gig Studio</h3>
+          <p>
+            Prepare gig titles, descriptions, packages,
+            keywords, and client requirements.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS PAGE -->
+  <section id="how-it-works" class="page" hidden>
+    <div class="how-section">
+      <p class="section-label">SIMPLE PROCESS</p>
+      <h2>How Skill To Market AI Works</h2>
+
+      <div class="steps-grid">
+        <article class="step-card">
+          <span>01</span>
+          <h3>Enter Your Skills</h3>
+          <p>Provide your education, skills, and career goals.</p>
+        </article>
+
+        <article class="step-card">
+          <span>02</span>
+          <h3>Build Your Strategy</h3>
+          <p>Get personalized branding and marketing guidance.</p>
+        </article>
+
+        <article class="step-card">
+          <span>03</span>
+          <h3>Prepare for Freelancing</h3>
+          <p>Explore content ideas and optional Fiverr gig details.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDENT INFORMATION -->
+  <section id="student" class="page form-page" hidden>
+    <div class="form-panel">
+      <p class="step-label">STEP 01 / 02</p>
+      <h2>Let's Discover Your Skills</h2>
+      <p class="intro-text">
+        Tell us about your education, skills and career goals.
+      </p>
+
+      <div class="progress-bar">
+        <span class="active"></span>
+        <span></span>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="degree">Degree / Field of Study *</label>
+          <input id="degree" type="text"
+                 placeholder="e.g. BS Computer Science" required>
+        </div>
+
+        <div class="field">
+          <label for="skill">Your Main Skill *</label>
+          <input id="skill" type="text"
+                 placeholder="e.g. Web Development" required>
+        </div>
+
+        <div class="field">
+          <label for="experience">Experience Level *</label>
+          <select id="experience" required>
+            <option value="">Select Experience Level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="careerGoal">Career Goal *</label>
+          <input id="careerGoal" type="text"
+                 placeholder="e.g. Find Freelance Clients" required>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="outline-button"
+                data-view="home">← Back to Home</button>
+        <button type="button" class="green-button"
+                id="continueBtn">Continue →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKETING PREFERENCES -->
+  <section id="preferences" class="page form-page" hidden>
+    <div class="form-panel preferences-panel">
+      <p class="step-label">STEP 02 / 02</p>
+      <h2>Find Your Direction</h2>
+      <p class="intro-text">
+        Choose your marketing preferences and optional Fiverr Gig.
+      </p>
+
+      <div class="progress-bar">
+        <span class="active"></span>
+        <span class="active second-progress"></span>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="platforms">Preferred Platforms *</label>
+          <input id="platforms" type="text"
+                 placeholder="e.g. LinkedIn, Instagram" required>
+        </div>
+
+        <div class="field">
+          <label for="interest">Area of Interest *</label>
+          <input id="interest" type="text"
+                 placeholder="e.g. E-commerce Websites" required>
+        </div>
+
+        <div class="field full-width">
+          <label for="availableTime">Available Time (Optional)</label>
+          <input id="availableTime" type="text"
+                 placeholder="e.g. 2 hours per day">
+        </div>
+      </div>
+
+      <div class="fiverr-option">
+        <h3>◆ Want to Create a Fiverr Gig?</h3>
+        <p>Optionally prepare your freelance service content.</p>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="enableFiverr">
+          Yes, I want to generate a Fiverr Gig
+        </label>
+
+        <div id="fiverrFields" hidden>
+          <h3>Fiverr Gig Information</h3>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="serviceType">Service / Gig Type *</label>
+              <input id="serviceType" type="text"
+                placeholder="e.g. Shopify Store Development" disabled>
+            </div>
+
+            <div class="field">
+              <label for="targetClient">Target Client *</label>
+              <input id="targetClient" type="text"
+                placeholder="e.g. Small Businesses" disabled>
+            </div>
+
+            <div class="field">
+              <label for="tools">Tools / Technologies *</label>
+              <input id="tools" type="text"
+                placeholder="e.g. Shopify, HTML, CSS" disabled>
+            </div>
+
+            <div class="field">
+              <label for="startingPrice">Starting Price *</label>
+              <input id="startingPrice" type="text"
+                placeholder="e.g. $50" disabled>
+            </div>
+
+            <div class="field">
+              <label for="deliveryTime">Delivery Time *</label>
+              <input id="deliveryTime" type="text"
+                placeholder="e.g. 5 days" disabled>
+            </div>
+
+            <div class="field">
+              <label for="revisions">Number of Revisions *</label>
+              <input id="revisions" type="number" min="0"
+                placeholder="e.g. 2" disabled>
+            </div>
+
+            <div class="field full-width">
+              <label for="portfolio">Portfolio / Work Samples *</label>
+              <select id="portfolio" disabled>
+                <option value="">Select Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="outline-button"
+                data-view="student">← Back</button>
+        <button type="button" class="green-button"
+                id="generateBtn">
+          Generate My Marketing Kit →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKETING KIT RESULTS -->
+  <section id="results" class="page results-page" hidden>
+    <div class="results-container">
+      <div class="results-heading">
+        <p class="section-label">YOUR PERSONALIZED RESULTS</p>
+        <h2>Your Personal Branding Studio</h2>
+        <p>Explore your Digital Marketing Kit.</p>
+        <p class="demo-notice">
+          AI-generated suggestions. Review and personalize them before using.
+        </p>
+      </div>
+
+      <div class="result-grid">
+        <article class="result-card result-green">
+          <h3>AI-Based Skill Analysis</h3>
+          <div id="skillAnalysisResult"></div>
+        </article>
+        <article class="result-card result-coral">
+          <h3>Target Audience Identification</h3>
+          <div id="targetAudienceResult"></div>
+        </article>
+        <article class="result-card result-purple">
+          <h3>Niche & Brand Positioning</h3>
+          <div id="nicheResult"></div>
+        </article>
+        <article class="result-card result-blue">
+          <h3>Profile Optimization</h3>
+          <div id="profileOptimizationResult"></div>
+        </article>
+        <article class="result-card result-gold">
+          <h3>Personalized Content Strategy</h3>
+          <div id="contentStrategyResult"></div>
+        </article>
+        <article class="result-card result-pink">
+          <h3>Caption & Content Generator</h3>
+          <div id="captionResult"></div>
+        </article>
+        <article class="result-card result-green">
+          <h3>Client Outreach Drafts</h3>
+          <div id="outreachResult"></div>
+        </article>
+        <article class="result-card result-coral">
+          <h3>Pricing Guidance</h3>
+          <div id="pricingResult"></div>
+        </article>
+        <article class="result-card result-purple">
+          <h3>Profile Score & Analysis</h3>
+          <div id="profileAnalysisResult"></div>
+        </article>
+      </div>
+
+      <div class="calendar-box">
+        <h3>Your 7-Day Marketing Calendar</h3>
+        <p id="marketingPlanIntro"></p>
+        <div class="calendar-grid" id="marketingCalendar"></div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="outline-button"
+                data-view="preferences">← Edit Information</button>
+
+        <button type="button" class="burgundy-button"
+                id="viewFiverrBtn" hidden>View My Fiverr Gig →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIVERR GIG RESULTS -->
+  <section id="fiverr-results" class="page results-page" hidden>
+    <div class="results-container">
+      <div class="results-heading">
+        <p class="section-label">FREELANCING STUDIO</p>
+        <h2>Your Fiverr Gig Studio</h2>
+        <p class="demo-notice">
+          AI-generated Gig content. Review it before using on Fiverr.
+          It is not published automatically.
+        </p>
+      </div>
+
+      <div class="gig-title-box">
+        <h3>Your Gig Title</h3>
+        <p id="gigTitleResult"></p>
+      </div>
+
+      <div class="result-grid">
+        <article class="result-card result-purple">
+          <h3>Category / Subcategory</h3>
+          <div id="gigCategoryResult"></div>
+        </article>
+        <article class="result-card result-green">
+          <h3>Search Tags / Keywords</h3>
+          <div id="gigTagsResult"></div>
+        </article>
+      </div>
+
+      <h3 class="packages-title">
+        Basic, Standard & Premium Packages
+      </h3>
+
+      <div class="package-grid">
+        <article class="package-card package-basic">
+          <h3>Basic</h3>
+          <strong id="basicPrice">TBD</strong>
+          <p>Starter Package</p>
+        </article>
+        <article class="package-card package-standard">
+          <h3>Standard</h3>
+          <strong>To be suggested</strong>
+          <p>Business Package</p>
+        </article>
+        <article class="package-card package-premium">
+          <h3>Premium</h3>
+          <strong>To be suggested</strong>
+          <p>Complete Package</p>
+        </article>
+      </div>
+
+      <p class="package-note">
+        AI-generated package suggestions. Review before using.
+      </p>
+
+      <div class="result-grid">
+        <article class="result-card result-gold">
+          <h3>Pricing, Delivery & Revisions</h3>
+          <div id="gigPricingResult"></div>
+        </article>
+        <article class="result-card result-blue">
+          <h3>Gig Description</h3>
+          <div id="gigDescriptionResult"></div>
+        </article>
+        <article class="result-card result-pink">
+          <h3>Frequently Asked Questions</h3>
+          <div id="gigFaqResult"></div>
+        </article>
+        <article class="result-card result-coral">
+          <h3>Buyer Requirements</h3>
+          <div id="gigRequirementsResult"></div>
+        </article>
+        <article class="result-card result-green">
+          <h3>Gallery / Portfolio Suggestions</h3>
+          <div id="gigPortfolioResult"></div>
+        </article>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="outline-button"
+                data-view="results">← Back to Marketing Kit</button>
+        <button type="button" class="green-button"
+                data-view="home">Back to Home</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // ALL SCREENS
+  const pageIds = [
+    "home", "features", "how-it-works",
+    "student", "preferences", "results", "fiverr-results"
+  ];
+
+  const pages = pageIds.map(function(id) {
+    return document.getElementById(id);
+  });
+
+  // NORMAL MODE: ONLY ONE SCREEN
+  function showPage(pageId) {
+    pages.forEach(function(page) {
+      page.hidden = page.id !== pageId;
+    });
+
+    window.scrollTo(0, 0);
+  }
+
+  // EXPLORE MODE: HOME + FEATURES + HOW IT WORKS
+  function exploreWebsite() {
+    pages.forEach(function(page) {
+      const isExplorePage = [
+        "home", "features", "how-it-works"
+      ].includes(page.id);
+
+      page.hidden = !isExplorePage;
+    });
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // NAVIGATION BUTTONS: INDIVIDUAL SCREENS
+  document.querySelectorAll("[data-view]").forEach(function(button) {
+    button.addEventListener("click", function(event) {
+      event.preventDefault();
+      showPage(this.dataset.view);
+    });
+  });
+
+  // EXPLORE NOW: SCROLLING MODE
+  document.getElementById("exploreBtn").addEventListener(
+    "click", function() {
+      exploreWebsite();
+    }
+  );
+
+  // FORM HELPERS
+  function getValue(id) {
+    return document.getElementById(id).value.trim();
+  }
+
+  function validateFields(ids, pageId) {
+    for (const id of ids) {
+      const field = document.getElementById(id);
+
+      if (!field.value.trim() || !field.checkValidity()) {
+        showPage(pageId);
+        field.focus();
+        field.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  const studentIds = [
+    "degree", "skill", "experience", "careerGoal"
+  ];
+
+  const preferenceIds = ["platforms", "interest"];
+
+  const fiverrIds = [
+    "serviceType", "targetClient", "tools",
+    "startingPrice", "deliveryTime", "revisions", "portfolio"
+  ];
+
+  // CONTINUE TO MARKETING PREFERENCES
+  document.getElementById("continueBtn").addEventListener(
+    "click", function() {
+      if (validateFields(studentIds, "student")) {
+        showPage("preferences");
+      }
+    }
+  );
+
+  // OPTIONAL FIVERR FORM
+  const enableFiverr = document.getElementById("enableFiverr");
+  const fiverrFields = document.getElementById("fiverrFields");
+
+  enableFiverr.addEventListener("change", function() {
+    fiverrFields.hidden = !this.checked;
+
+    fiverrFields.querySelectorAll("input, select").forEach(
+      function(field) {
+        field.disabled = !enableFiverr.checked;
+        field.required = enableFiverr.checked;
+      }
+    );
+  });
+
+  // ---------- RENDER HELPERS ----------
+  function makeEl(tag, text) {
+    const node = document.createElement(tag);
+    if (text !== undefined && text !== null) node.textContent = String(text);
+    return node;
+  }
+
+  function asList(value) {
+    return Array.isArray(value) ? value : [];
+  }
+
+  function listEl(items) {
+    const ul = document.createElement("ul");
+    ul.style.paddingLeft = "20px";
+    ul.style.marginTop = "4px";
+    asList(items).forEach(function(item) {
+      ul.appendChild(makeEl("li", item));
+    });
+    return ul;
+  }
+
+  function labelBlock(label, value) {
+    const wrap = document.createElement("div");
+    wrap.style.marginBottom = "10px";
+    wrap.style.whiteSpace = "pre-line";
+    wrap.appendChild(makeEl("strong", label + ": "));
+    wrap.appendChild(document.createTextNode(value == null ? "" : String(value)));
+    return wrap;
+  }
+
+  function listBlock(label, items) {
+    const wrap = document.createElement("div");
+    wrap.style.marginBottom = "10px";
+    wrap.appendChild(makeEl("strong", label));
+    wrap.appendChild(listEl(items));
+    return wrap;
+  }
+
+  function fillBox(id, nodes) {
+    document.getElementById(id).replaceChildren(...nodes);
+  }
+
+  // ---------- MARKETING KIT RENDER ----------
+  function renderKit(kit) {
+    const k = kit || {};
+
+    const sa = k.skillAnalysis || {};
+    fillBox("skillAnalysisResult", [
+      labelBlock("Summary", sa.summary),
+      listBlock("Strengths", sa.strengths),
+      listBlock("Areas to Improve", sa.improvementAreas),
+      listBlock("Services You Can Offer", sa.marketableServices)
+    ]);
+
+    const ta = k.targetAudience || {};
+    fillBox("targetAudienceResult", [
+      labelBlock("Primary Audience", ta.primaryAudience),
+      labelBlock("Secondary Audience", ta.secondaryAudience),
+      listBlock("Client Types", ta.clientTypes),
+      listBlock("Where to Find Them", ta.whereToFindThem)
+    ]);
+
+    const ni = k.niche || {};
+    fillBox("nicheResult", [
+      labelBlock("Recommended Niche", ni.recommendedNiche),
+      labelBlock("Why It Fits", ni.reason),
+      labelBlock("Brand Positioning", ni.brandPositioning),
+      labelBlock("Value Proposition", ni.uniqueValueProposition),
+      labelBlock("Brand Tone", ni.brandTone)
+    ]);
+
+    const po = k.profileOptimization || {};
+    const li = po.linkedin || {};
+    const ig = po.instagram || {};
+    fillBox("profileOptimizationResult", [
+      labelBlock("LinkedIn Headline", li.headline),
+      labelBlock("LinkedIn About", li.about),
+      labelBlock("LinkedIn Skills to Add", asList(li.skillsToAdd).join(", ")),
+      listBlock("LinkedIn Tips", li.tips),
+      labelBlock("Instagram Bio", ig.bio),
+      listBlock("Instagram Highlight Ideas", ig.highlightIdeas),
+      listBlock("Instagram Tips", ig.tips)
+    ]);
+
+    const cs = k.contentStrategy || {};
+    fillBox("contentStrategyResult", [
+      listBlock("Content Pillars", asList(cs.contentPillars).map(function(p) {
+        return p.pillar + ": " + p.description;
+      })),
+      listBlock("Post Ideas", asList(cs.postIdeas).map(function(p) {
+        return p.platform + ": " + p.idea;
+      })),
+      labelBlock("Posting Frequency", cs.postingFrequency)
+    ]);
+
+    fillBox("captionResult", asList(k.captions).map(function(c, i) {
+      const wrap = document.createElement("div");
+      wrap.style.marginBottom = "14px";
+      wrap.style.whiteSpace = "pre-line";
+      wrap.appendChild(makeEl("strong", (i + 1) + ". " + c.type + " | " + c.platform));
+
+      // hashtags caption ke andar hon to hata do (duplicate se bachne ke liye)
+      const cleanCaption = String(c.caption || "")
+        .replace(/#\w+/g, "")
+        .replace(/[ \t]+/g, " ")
+        .trim();
+      wrap.appendChild(makeEl("p", cleanCaption));
+
+      // hashtags array ke duplicates hata do
+      const tags = Array.from(new Set(asList(c.hashtags)));
+      wrap.appendChild(makeEl("p", tags.join(" ")));
+      return wrap;
+    }));
+
+    const oc = k.outreach || {};
+    fillBox("outreachResult", [
+      labelBlock("LinkedIn Message", oc.linkedinMessage),
+      labelBlock("Email Subject", oc.emailSubject),
+      labelBlock("Email Body", oc.emailBody),
+      labelBlock("Instagram DM", oc.instagramDM),
+      labelBlock("Follow-up Message", oc.followUpMessage)
+    ]);
+
+    const pr = k.pricing || {};
+    fillBox("pricingResult", [
+      labelBlock("Approach", pr.pricingApproach),
+      labelBlock("Starting Price Range", pr.startingPriceRange),
+      listBlock("Package Ideas", asList(pr.packageIdeas).map(function(p) {
+        return p.name + " (" + p.price + "): " + p.includes;
+      })),
+      listBlock("Pricing Tips", pr.tips)
+    ]);
+
+    const pa = k.profileAnalysis || {};
+    fillBox("profileAnalysisResult", [
+      labelBlock("Score", pa.score == null ? (pa.scoreStatus || "Not evaluated") : pa.score + "/100"),
+      labelBlock("Analysis", pa.analysis),
+      listBlock("Improvement Tips", pa.improvementTips)
+    ]);
+
+    const calendar = document.getElementById("marketingCalendar");
+    calendar.replaceChildren();
+    asList(k.marketingPlan).forEach(function(d, index) {
+      const card = document.createElement("article");
+      card.className = "calendar-day day-" + ((index % 7) + 1);
+      card.appendChild(makeEl("span", "DAY " + (d.day || index + 1)));
+      card.appendChild(makeEl("h4", d.focus));
+      card.appendChild(makeEl("p", d.task));
+      card.appendChild(makeEl("p", "Content: " + d.contentIdea));
+      card.appendChild(makeEl("p", "Engage: " + d.engagementActivity));
+      card.appendChild(makeEl("p", d.platform + " | " + d.timeNeeded));
+      calendar.appendChild(card);
+    });
+
+    document.getElementById("marketingPlanIntro").textContent =
+      "Your personalized day-by-day plan.";
+  }
+
+  // ---------- FIVERR GIG RENDER ----------
+  function renderFiverr(g, wanted) {
+    const btn = document.getElementById("viewFiverrBtn");
+
+    if (!wanted || !g) {
+      btn.hidden = true;
+      return;
+    }
+
+    document.getElementById("gigTitleResult").textContent = g.gigTitle || "";
+
+    fillBox("gigCategoryResult", [
+      labelBlock("Category", g.category),
+      labelBlock("Subcategory", g.subcategory)
+    ]);
+
+    fillBox("gigTagsResult", [
+      labelBlock("Tags", asList(g.tags).join(", "))
+    ]);
+
+    const grid = document.querySelector("#fiverr-results .package-grid");
+    grid.replaceChildren();
+    [
+      ["basic", "Basic", "package-basic"],
+      ["standard", "Standard", "package-standard"],
+      ["premium", "Premium", "package-premium"]
+    ].forEach(function(t) {
+      const p = (g.packages || {})[t[0]] || {};
+      const card = document.createElement("article");
+      card.className = "package-card " + t[2];
+      card.appendChild(makeEl("h3", t[1]));
+      card.appendChild(makeEl("strong", p.price));
+      card.appendChild(makeEl("p", p.name));
+      card.appendChild(makeEl("p", p.includes));
+      card.appendChild(makeEl("p",
+        [p.deliveryTime, p.revisions != null ? p.revisions + " revisions" : ""]
+          .filter(Boolean).join(" | ")));
+      grid.appendChild(card);
+    });
+
+    fillBox("gigPricingResult", [labelBlock("Summary", g.pricingSummary)]);
+    fillBox("gigDescriptionResult", [labelBlock("Description", g.description)]);
+
+    fillBox("gigFaqResult", asList(g.faqs).map(function(f) {
+      const w = document.createElement("div");
+      w.style.marginBottom = "10px";
+      w.appendChild(makeEl("strong", "Q: " + f.question));
+      w.appendChild(makeEl("p", "A: " + f.answer));
+      return w;
+    }));
+
+    fillBox("gigRequirementsResult", [
+      listBlock("Buyer should provide", g.requirements)
+    ]);
+
+    fillBox("gigPortfolioResult", [
+      listBlock("Suggestions", g.portfolioSuggestions)
+    ]);
+
+    btn.hidden = false;
+  }
+
+  // ---------- n8n CONNECTION ----------
+  const WEBHOOK_URL = "https://workflow.resailab.com/webhook/skill-to-market-ai";
+
+  async function fetchKit(payload) {
+    const controller = new AbortController();
+    const timer = setTimeout(function() {
+      controller.abort();
+    }, 150000);
+
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+
+      // Read plain text first: n8n may return an empty body on model failure.
+      const raw = await response.text();
+      let data;
+      try {
+        data = raw.trim() ? JSON.parse(raw) : null;
+      } catch (parseError) {
+        throw new Error("n8n returned an invalid response. Check the latest n8n execution and Respond to Webhook node.");
+      }
+
+      if (!response.ok) {
+        if (response.status === 429 || (data && data.error === "AI_LIMIT_REACHED")) {
+          throw new Error("Gemini AI request limit reached. Please try again after the quota resets.");
+        }
+        throw new Error((data && data.message) || ("n8n returned HTTP " + response.status));
+      }
+      if (!data || typeof data !== "object" || !data.skillAnalysis) {
+        throw new Error("n8n did not return a complete Marketing Kit. Check Message a model and Respond to Webhook nodes.");
+      }
+      return data;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  // GENERATE MARKETING KIT (+ OPTIONAL FIVERR GIG)
+  document.getElementById("generateBtn").addEventListener(
+    "click", async function() {
+
+      if (!validateFields(studentIds, "student")) return;
+
+      if (!validateFields(preferenceIds, "preferences")) return;
+
+      if (enableFiverr.checked &&
+          !validateFields(fiverrIds, "preferences")) return;
+
+      const wantsFiverr = enableFiverr.checked;
+
+      const degree = getValue("degree");
+      const skill = getValue("skill");
+      const experience = getValue("experience");
+      const goal = getValue("careerGoal");
+      const platforms = getValue("platforms");
+      const interest = getValue("interest");
+      const time = getValue("availableTime");
+
+      const generateButton = document.getElementById("generateBtn");
+      const buttonText = generateButton.textContent;
+      generateButton.disabled = true;
+      generateButton.textContent = "Generating... please wait (up to 2 minutes)";
+
+      let kit;
+
+      try {
+        kit = await fetchKit({
+          degree: degree,
+          skill: skill,
+          experience: experience,
+          goal: goal,
+          careerGoal: goal,
+          platform: platforms,
+          platforms: platforms,
+          interest: interest,
+          availableTime: time,
+          time: time,
+          fiverrEnabled: wantsFiverr ? "true" : "false",
+          serviceType: wantsFiverr ? getValue("serviceType") : "",
+          targetClient: wantsFiverr ? getValue("targetClient") : "",
+          tools: wantsFiverr ? getValue("tools") : "",
+          startingPrice: wantsFiverr ? getValue("startingPrice") : "",
+          deliveryTime: wantsFiverr ? getValue("deliveryTime") : "",
+          revisions: wantsFiverr ? getValue("revisions") : "",
+          portfolio: wantsFiverr ? getValue("portfolio") : ""
+        });
+      } catch (error) {
+        alert("Could not get AI result: " + error.message);
+        generateButton.disabled = false;
+        generateButton.textContent = buttonText;
+        return;
+      }
+
+      generateButton.disabled = false;
+      generateButton.textContent = buttonText;
+
+      window.latestKit = kit;
+      renderKit(kit);
+      renderFiverr(kit.fiverrGig, wantsFiverr);
+
+      if (wantsFiverr && !kit.fiverrGig) {
+        alert("Marketing kit aa gayi, lekin AI ke jawab mein 'fiverrGig' nahi tha. " +
+              "n8n ka prompt / parse node check karo. Keys mile: " +
+              Object.keys(kit).join(", "));
+      }
+
+      showPage("results");
+    }
+  );
+
+  document.getElementById("viewFiverrBtn").addEventListener(
+    "click", function() {
+      if (!this.hidden) showPage("fiverr-results");
+    }
+  );
+
+  // WEBSITE OPENS ON HOME PAGE ONLY
+  showPage("home");
+</script>
+
+</body>
+</html>
